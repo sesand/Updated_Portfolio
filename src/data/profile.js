@@ -152,7 +152,7 @@ export const profile = {
     { title: "Employee Upliftment Program", organization: "Skill Hub" }
   ],
   social: {
-    linkedin: "https://www.linkedin.com/in/sesan-duraisamy-76474a219/",
+    linkedin: "https://www.linkedin.com/in/sesan-duraisamy/",
     github: "https://github.com/sesand",
     topmate: "https://topmate.io/sesan_d",
     email: "sesanvk007@gmail.com",

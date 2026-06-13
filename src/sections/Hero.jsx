@@ -10,6 +10,7 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const profileImages = [
     '/assets/profile.jpg',
+    '/assets/profile_old_backup.jpg',
     '/assets/profile2.jpg',
     '/assets/profile3.jpg',
     '/assets/profile4.jpg',
@@ -72,7 +73,7 @@ const Hero = () => {
               <a href={`mailto:${profile.social.email}`} className="px-8 py-4 bg-transparent text-white rounded-full font-bold flex items-center gap-2 border border-slate-700 hover:bg-slate-800 hover:border-slate-600 transition-all duration-300 uppercase tracking-widest text-sm">
                 Contact Me
               </a>
-              <a href="/assets/Sesan_AI_Engineer_Resume.pdf" download="Sesan_AI_Engineer_Resume.pdf" className="px-8 py-4 bg-transparent text-white rounded-full font-bold flex items-center gap-2 border border-slate-700 hover:bg-slate-800 hover:border-slate-600 transition-all duration-300 uppercase tracking-widest text-sm">
+              <a href="/assets/AI_Engineer_SesanD_062026.docx" download="AI_Engineer_SesanD_062026.docx" className="px-8 py-4 bg-transparent text-white rounded-full font-bold flex items-center gap-2 border border-slate-700 hover:bg-slate-800 hover:border-slate-600 transition-all duration-300 uppercase tracking-widest text-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                 Resume
               </a>

@@ -33,7 +33,7 @@ const Navbar = () => {
                     ))}
                     
                     <div className="flex items-center gap-4 border-l border-slate-700 pl-8">
-                        <a href="/assets/Sesan_AI_Engineer_Resume.pdf" download="Sesan_AI_Engineer_Resume.pdf" className="text-sm font-medium text-slate-400 hover:text-primary transition-colors flex items-center gap-2" title="Download Resume">
+                        <a href="/assets/AI_Engineer_SesanD_062026.docx" download="AI_Engineer_SesanD_062026.docx" className="text-sm font-medium text-slate-400 hover:text-primary transition-colors flex items-center gap-2" title="Download Resume">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                             Resume
                         </a>
@@ -52,7 +52,7 @@ const Navbar = () => {
                         <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-slate-300 hover:text-primary">{link.name}</a>
                     ))}
                     <div className="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
-                        <a href="/assets/Sesan_AI_Engineer_Resume.pdf" download="Sesan_AI_Engineer_Resume.pdf" className="flex-1 text-center py-3 bg-slate-800 text-white rounded-lg font-bold flex items-center justify-center gap-2">
+                        <a href="/assets/AI_Engineer_SesanD_062026.docx" download="AI_Engineer_SesanD_062026.docx" className="flex-1 text-center py-3 bg-slate-800 text-white rounded-lg font-bold flex items-center justify-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                             Resume
                         </a>
