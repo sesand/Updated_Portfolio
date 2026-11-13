@@ -62,7 +62,6 @@ function Site() {
         <footer className="flex flex-col items-center gap-3 border-t border-slate-900 bg-slate-950/80 py-10 text-center backdrop-blur">
           <Logo size={40} animate={false} />
           <p className="text-sm text-slate-500">&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-          <p className="text-xs text-slate-600">{profile.role} Portfolio</p>
         </footer>
       </div>
     </main>
