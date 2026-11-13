@@ -1,63 +1,88 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Download, Play } from 'lucide-react';
 import { profile } from '../data/profile';
+import Logo from './Logo';
+import { useStory } from '../story/StoryContext';
+
+const navLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Stack', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+];
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { play, mode } = useStory();
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const onScroll = () => setIsScrolled(window.scrollY > 50);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const navLinks = [
-        { name: 'About', href: '#about' },
-        { name: 'Experience', href: '#experience' },
-        { name: 'Stack', href: '#skills' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Contact', href: '#contact' },
-    ];
+    const playStory = () => {
+        setIsMenuOpen(false);
+        play();
+    };
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-4 bg-slate-950/80 backdrop-blur-lg border-b border-white/5' : 'py-6 bg-transparent'}`}>
-            <div className="container mx-auto px-6 flex justify-between items-center">
-                <motion.a href="#" className="flex items-center gap-3 font-bold tracking-tighter text-white">
-                    <img src="/assets/profile.jpg" alt="Sesan Duraisamy" className="w-12 h-12 rounded-full border-2 border-primary/50 object-cover bg-slate-800" />
-                    <span className="text-xl hidden sm:block">Sesan Duraisamy</span>
-                </motion.a>
+        <nav
+            data-story-ui
+            className={`fixed top-0 z-50 w-full transition-all duration-300 ${mode === 'off' ? '' : 'mt-[34px]'} ${isScrolled ? 'border-b border-white/5 bg-slate-950/80 py-3 backdrop-blur-lg' : 'bg-transparent py-5'}`}
+        >
+            <div className="container mx-auto flex items-center justify-between px-6">
+                <a href="#home" className="flex items-center gap-3 font-bold tracking-tighter text-white" aria-label={`${profile.name} — home`}>
+                    <Logo size={44} />
+                    <span className="hidden text-lg sm:block">{profile.name}</span>
+                </a>
 
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden items-center gap-7 md:flex">
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="text-sm font-medium text-slate-400 hover:text-primary transition-colors">{link.name}</a>
+                        <a key={link.name} href={link.href} className="text-sm font-medium text-slate-400 transition-colors hover:text-primary">{link.name}</a>
                     ))}
-                    
-                    <div className="flex items-center gap-4 border-l border-slate-700 pl-8">
-                        <a href={profile.resume.file} download={profile.resume.name} className="text-sm font-medium text-slate-400 hover:text-primary transition-colors flex items-center gap-2" title="Download Resume">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                            Resume
+                    <div className="flex items-center gap-4 border-l border-slate-700 pl-7">
+                        <button
+                            type="button"
+                            onClick={playStory}
+                            className="flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-bold text-primary transition hover:bg-primary hover:text-slate-950"
+                        >
+                            <Play size={14} fill="currentColor" /> Play story
+                        </button>
+                        <a href={profile.resume.file} download={profile.resume.name} className="flex items-center gap-2 text-sm font-medium text-slate-400 transition-colors hover:text-primary" title="Download Resume">
+                            <Download size={16} /> Resume
                         </a>
-                        <a href={`mailto:${profile.social.email}`} className="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-slate-950 rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/25">Hire Me</a>
+                        <a href={`mailto:${profile.social.email}`} className="rounded-full bg-gradient-to-r from-primary to-secondary px-5 py-2 text-sm font-bold text-slate-950 shadow-lg shadow-primary/25 transition-all hover:opacity-90">Hire me</a>
                     </div>
                 </div>
 
-                <button className="md:hidden text-white font-bold" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button
+                    type="button"
+                    className="font-bold text-white md:hidden"
+                    aria-expanded={isMenuOpen}
+                    onClick={() => setIsMenuOpen((v) => !v)}
+                >
                     {isMenuOpen ? 'CLOSE' : 'MENU'}
                 </button>
             </div>
 
             {isMenuOpen && (
-                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="absolute top-full left-0 w-full bg-slate-900 border-b border-slate-800 p-6 flex flex-col gap-4 md:hidden shadow-xl">
+                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="absolute left-0 top-full flex w-full flex-col gap-4 border-b border-slate-800 bg-slate-900 p-6 shadow-xl md:hidden">
                     {navLinks.map((link) => (
                         <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-slate-300 hover:text-primary">{link.name}</a>
                     ))}
-                    <div className="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
-                        <a href={profile.resume.file} download={profile.resume.name} className="flex-1 text-center py-3 bg-slate-800 text-white rounded-lg font-bold flex items-center justify-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                            Resume
+                    <button type="button" onClick={playStory} className="flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 py-3 font-bold text-primary">
+                        <Play size={16} fill="currentColor" /> Play story
+                    </button>
+                    <div className="flex items-center gap-4 border-t border-slate-800 pt-4">
+                        <a href={profile.resume.file} download={profile.resume.name} className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-slate-800 py-3 text-center font-bold text-white">
+                            <Download size={16} /> Resume
                         </a>
-                        <a href={`mailto:${profile.social.email}`} className="flex-1 text-center py-3 bg-primary text-slate-950 rounded-lg font-bold">Hire Me</a>
+                        <a href={`mailto:${profile.social.email}`} className="flex-1 rounded-lg bg-primary py-3 text-center font-bold text-slate-950">Hire me</a>
                     </div>
                 </motion.div>
             )}

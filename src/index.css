@@ -36,9 +36,10 @@
     }
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  /* Lenis (smooth scroll) needs the browser's own smoothing off */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: clip; }
 }
 
 @layer utilities {
@@ -50,6 +51,31 @@
     @apply bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-xl;
   }
   
+  /* giant outlined chapter numbers */
+  .outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(129, 140, 248, 0.35);
+  }
+
+  /* cursor spotlight on cards (position is set by TiltCard) */
+  .spotlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.14), transparent 60%);
+  }
+  .spotlight:hover::after { opacity: 1; }
+
+  /* subtle dotted grid for hero / sections */
+  .bg-grid {
+    background-image: radial-gradient(rgba(148, 163, 184, 0.16) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
   .animation-delay-2000 {
     animation-delay: 2s;
   }
@@ -71,3 +97,18 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-slate-800 rounded-full hover:bg-slate-700 transition-colors;
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+/* when Motion is switched off (or the OS asks for it) nothing loops */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+html[data-motion="off"] .marquee-track { animation: none; }
+html[data-motion="off"] * { scroll-behavior: auto !important; }

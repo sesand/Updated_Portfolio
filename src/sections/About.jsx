@@ -1,94 +1,101 @@
-import { motion } from 'framer-motion';
+import { GraduationCap, Languages, Cpu } from 'lucide-react';
 import { profile } from '../data/profile';
-import { GraduationCap, Languages, User, Cpu } from 'lucide-react';
+import ChapterHeading from '../components/ui/ChapterHeading';
+import { Reveal } from '../components/ui/Reveal';
+import TiltCard from '../components/ui/TiltCard';
+import CountUp from '../components/CountUp';
 
-const fadeUp = (delay = 0) => ({
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6, delay },
-});
+// Every number here is real: years come from the resume, the rest are counted from profile.js.
+const stats = [
+    { value: 2, suffix: '+', label: 'Years building AI' },
+    { value: profile.projects.length, suffix: '', label: 'Projects shipped' },
+    { value: profile.experience.length, suffix: '', label: 'Roles held' },
+    { value: profile.publications.length, suffix: '', label: 'Springer paper' },
+];
 
-const About = () => {
-    return (
-        <section id="about" className="py-24 relative">
-            <div className="container mx-auto px-6">
-                <div className="flex items-center gap-2 mb-12">
-                    <User className="text-primary w-6 h-6" />
-                    <span className="text-secondary font-semibold uppercase tracking-wider text-sm">About</span>
-                </div>
+const About = () => (
+    <section id="about" className="relative py-28">
+        <div className="container mx-auto px-6">
+            <ChapterHeading number="01" kicker="About" title="Who" accent="I am" />
 
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">
-                    Who I <span className="text-gradient">Am</span>
-                </h2>
-
-                <motion.p {...fadeUp()} className="text-lg text-slate-300 leading-relaxed max-w-4xl mb-16">
-                    {profile.about}
-                </motion.p>
-
-                <div className="flex items-center gap-2 mb-8">
-                    <Cpu className="text-primary w-5 h-5" />
-                    <h3 className="text-xl font-bold text-white">Core Expertise</h3>
-                </div>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-                    {profile.coreExpertise.map((item, i) => (
-                        <motion.div
-                            key={item.title}
-                            {...fadeUp(i * 0.08)}
-                            className="min-w-0 bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-primary/30 transition-all"
-                        >
-                            <h4 className="text-lg font-bold text-white mb-2">{item.title}</h4>
-                            <p className="text-slate-400 text-sm leading-relaxed">{item.text}</p>
-                        </motion.div>
+            <div className="mb-24 grid items-start gap-12 lg:grid-cols-12">
+                <Reveal className="lg:col-span-7">
+                    <p className="text-xl font-light leading-relaxed text-slate-200 md:text-2xl">{profile.about}</p>
+                </Reveal>
+                <div className="grid grid-cols-2 gap-4 lg:col-span-5">
+                    {stats.map((s, i) => (
+                        <Reveal key={s.label} delay={i * 0.08}>
+                            <TiltCard className="h-full rounded-2xl border border-white/10 bg-slate-900/50 p-6 backdrop-blur">
+                                <div className="text-gradient text-5xl font-extrabold tracking-tight">
+                                    <CountUp to={s.value} suffix={s.suffix} />
+                                </div>
+                                <p className="mt-2 text-sm text-slate-400">{s.label}</p>
+                            </TiltCard>
+                        </Reveal>
                     ))}
                 </div>
+            </div>
 
-                <div className="grid lg:grid-cols-3 gap-10">
-                    <div className="lg:col-span-2 min-w-0">
-                        <div className="flex items-center gap-2 mb-8">
-                            <GraduationCap className="text-primary w-5 h-5" />
-                            <h3 className="text-xl font-bold text-white">Education</h3>
-                        </div>
-                        <div className="space-y-6">
-                            {profile.education.map((edu, i) => (
-                                <motion.div
-                                    key={edu.degree}
-                                    {...fadeUp(i * 0.1)}
-                                    className="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-primary/30 transition-all"
-                                >
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <Reveal>
+                <h3 className="mb-8 flex items-center gap-3 text-xl font-bold text-white">
+                    <Cpu className="h-5 w-5 text-primary" /> Core Expertise
+                </h3>
+            </Reveal>
+            <div className="mb-24 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {profile.coreExpertise.map((item, i) => (
+                    <Reveal key={item.title} delay={(i % 3) * 0.08}>
+                        <TiltCard className="h-full rounded-2xl border border-slate-800 bg-slate-900/60 p-7 backdrop-blur transition-colors hover:border-primary/40">
+                            <span className="font-mono text-xs text-primary/70">{String(i + 1).padStart(2, '0')}</span>
+                            <h4 className="mb-3 mt-2 text-lg font-bold text-white">{item.title}</h4>
+                            <p className="text-sm leading-relaxed text-slate-400">{item.text}</p>
+                        </TiltCard>
+                    </Reveal>
+                ))}
+            </div>
+
+            <div className="grid gap-12 lg:grid-cols-3">
+                <div className="min-w-0 lg:col-span-2">
+                    <Reveal>
+                        <h3 className="mb-8 flex items-center gap-3 text-xl font-bold text-white">
+                            <GraduationCap className="h-5 w-5 text-primary" /> Education
+                        </h3>
+                    </Reveal>
+                    <div className="space-y-5">
+                        {profile.education.map((edu, i) => (
+                            <Reveal key={edu.degree} delay={i * 0.1}>
+                                <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur transition-colors hover:border-primary/30">
+                                    <div className="mb-2 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                                         <h4 className="text-lg font-bold text-white">{edu.degree}</h4>
-                                        <span className="self-start px-3 py-1 bg-slate-800 text-primary text-xs font-bold rounded-full border border-slate-700">{edu.period}</span>
+                                        <span className="self-start rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-bold text-primary">{edu.period}</span>
                                     </div>
-                                    <p className="text-secondary font-medium">{edu.school}</p>
-                                    <p className="text-slate-400 text-sm mt-1">{edu.score}</p>
-                                </motion.div>
-                            ))}
-                        </div>
+                                    <p className="font-medium text-secondary">{edu.school}</p>
+                                    <p className="mt-1 text-sm text-slate-400">{edu.score}</p>
+                                </div>
+                            </Reveal>
+                        ))}
                     </div>
+                </div>
 
-                    <div className="min-w-0">
-                        <div className="flex items-center gap-2 mb-8">
-                            <Languages className="text-primary w-5 h-5" />
-                            <h3 className="text-xl font-bold text-white">Languages</h3>
-                        </div>
-                        <div className="space-y-4">
-                            {profile.languages.map((lang, i) => (
-                                <motion.div
-                                    key={lang.name}
-                                    {...fadeUp(i * 0.1)}
-                                    className="bg-slate-900 p-6 rounded-2xl border border-slate-800"
-                                >
+                <div className="min-w-0">
+                    <Reveal>
+                        <h3 className="mb-8 flex items-center gap-3 text-xl font-bold text-white">
+                            <Languages className="h-5 w-5 text-primary" /> Languages
+                        </h3>
+                    </Reveal>
+                    <div className="space-y-4">
+                        {profile.languages.map((lang, i) => (
+                            <Reveal key={lang.name} delay={i * 0.1}>
+                                <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur">
                                     <h4 className="text-lg font-bold text-white">{lang.name}</h4>
-                                    <p className="text-slate-400 text-sm">{lang.level}</p>
-                                </motion.div>
-                            ))}
-                        </div>
+                                    <p className="text-sm text-slate-400">{lang.level}</p>
+                                </div>
+                            </Reveal>
+                        ))}
                     </div>
                 </div>
             </div>
-        </section>
-    );
-};
+        </div>
+    </section>
+);
 
 export default About;

@@ -1,64 +1,55 @@
-import { motion } from 'framer-motion';
+import { Award, BookOpen, ExternalLink } from 'lucide-react';
 import { profile } from '../data/profile';
-import { BookOpen, ExternalLink } from 'lucide-react';
+import ChapterHeading from '../components/ui/ChapterHeading';
+import { Reveal } from '../components/ui/Reveal';
+import TiltCard from '../components/ui/TiltCard';
 
-const Achievements = () => {
-    return (
-        <section id="achievements" className="py-24 bg-slate-950 relative border-t border-slate-900">
-            <div className="container mx-auto px-6 relative z-10">
-                {profile.publications?.length > 0 && (
-                    <div className="mb-24">
-                        <div className="flex items-center gap-2 mb-12">
-                            <BookOpen className="text-primary w-6 h-6" />
-                            <span className="text-secondary font-semibold uppercase tracking-wider text-sm">Publication</span>
-                        </div>
-                        <div className="space-y-6">
-                            {profile.publications.map((pub) => (
-                                <motion.a
-                                    key={pub.doi}
-                                    href={pub.link}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    whileHover={{ y: -4 }}
-                                    className="block p-8 rounded-2xl bg-slate-900/50 border border-white/5 hover:border-primary/30 backdrop-blur-xl transition-all group"
-                                >
-                                    <div className="flex items-center justify-between gap-4 mb-4">
-                                        <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full border border-primary/20">{pub.venue}</span>
-                                        <ExternalLink size={18} className="text-slate-500 group-hover:text-primary transition-colors shrink-0" />
+const Achievements = () => (
+    <section id="achievements" className="relative py-28">
+        <div className="container mx-auto px-6">
+            <ChapterHeading number="05" kicker="Recognition" title="Research &" accent="Achievements" />
+
+            {profile.publications?.length > 0 && (
+                <div className="mb-20 space-y-6">
+                    {profile.publications.map((pub) => (
+                        <Reveal key={pub.doi}>
+                            <TiltCard max={3} className="rounded-3xl border border-primary/20 bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur transition-colors hover:border-primary/50">
+                                <a href={pub.link} target="_blank" rel="noreferrer" className="group block p-8 md:p-10">
+                                    <div className="mb-5 flex items-center justify-between gap-4">
+                                        <span className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
+                                            <BookOpen size={14} /> {pub.venue}
+                                        </span>
+                                        <ExternalLink size={18} className="shrink-0 text-slate-500 transition-colors group-hover:text-primary" />
                                     </div>
-                                    <h3 className="text-white font-bold text-lg md:text-xl mb-3 group-hover:text-primary transition-colors">{pub.title}</h3>
-                                    <p className="text-slate-400 leading-relaxed mb-4 max-w-4xl">{pub.description}</p>
-                                    <p className="text-slate-500 text-xs font-mono break-all">DOI: {pub.doi}</p>
-                                </motion.a>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                <div className="flex items-center gap-2 mb-12">
-                    <span className="text-primary font-mono text-xl">★</span>
-                    <span className="text-secondary font-semibold uppercase tracking-wider text-sm">Certifications & Achievements</span>
-                </div>
-
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                    {profile.achievements.map((item) => (
-                        <motion.div
-                            key={item.title}
-                            whileHover={{ y: -5 }}
-                            className="min-w-0 p-6 rounded-2xl bg-slate-900/50 border border-white/5 backdrop-blur-xl relative overflow-hidden group"
-                        >
-                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <span className="text-4xl">🏆</span>
-                            </div>
-                            <h3 className="text-white font-bold text-lg mb-2 pr-10 group-hover:text-primary transition-colors">{item.title}</h3>
-                            <p className="text-slate-400 text-sm font-medium">{item.organization}</p>
-                            <div className="mt-6 w-8 h-1 bg-primary/30 group-hover:w-full transition-all duration-500"></div>
-                        </motion.div>
+                                    <h3 className="mb-4 max-w-4xl text-xl font-bold text-white transition-colors group-hover:text-primary md:text-2xl">{pub.title}</h3>
+                                    <p className="mb-5 max-w-4xl leading-relaxed text-slate-400">{pub.description}</p>
+                                    <p className="break-all font-mono text-xs text-slate-500">DOI: {pub.doi}</p>
+                                </a>
+                            </TiltCard>
+                        </Reveal>
                     ))}
                 </div>
+            )}
+
+            <Reveal>
+                <h3 className="mb-8 flex items-center gap-3 text-xl font-bold text-white">
+                    <Award className="h-5 w-5 text-primary" /> Certifications &amp; Achievements
+                </h3>
+            </Reveal>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                {profile.achievements.map((item, i) => (
+                    <Reveal key={item.title} delay={(i % 5) * 0.07}>
+                        <TiltCard max={5} className="group h-full min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur transition-colors hover:border-primary/40">
+                            <Award className="mb-4 h-6 w-6 text-primary/70" />
+                            <h4 className="mb-2 text-lg font-bold text-white transition-colors group-hover:text-primary">{item.title}</h4>
+                            <p className="text-sm font-medium text-slate-400">{item.organization}</p>
+                            <div className="mt-6 h-1 w-8 bg-primary/30 transition-all duration-500 group-hover:w-full" />
+                        </TiltCard>
+                    </Reveal>
+                ))}
             </div>
-        </section>
-    );
-};
+        </div>
+    </section>
+);
 
 export default Achievements;

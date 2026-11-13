@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="256" height="256" role="img" aria-label="Sesan Duraisamy logo">
+  <defs>
+    <linearGradient id="g" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.55" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="0.35" cy="0.25" r="0.9">
+      <stop offset="0" stop-color="#16233f"/>
+      <stop offset="1" stop-color="#070d1c"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- hexagon badge -->
+  <path d="M32 3.5 56.7 17.75v28.5L32 60.5 7.3 46.25v-28.5Z" fill="url(#bg)" stroke="url(#g)" stroke-width="2.6" stroke-linejoin="round"/>
+  <!-- inner hairline -->
+  <path d="M32 9.2 51.8 20.6v22.8L32 54.8 12.2 43.4V20.6Z" fill="none" stroke="#818cf8" stroke-opacity="0.22" stroke-width="0.8"/>
+  <!-- the S: one continuous path through three nodes -->
+  <path d="M43 21C43 14.5 21 14.5 21 25C21 35 43 29 43 39.5C43 50 21 50 21 43" fill="none" stroke="url(#g)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <!-- nodes -->
+  <g fill="#e0f2fe" filter="url(#glow)">
+    <circle cx="43" cy="21" r="3.1"/>
+    <circle cx="32" cy="32.2" r="3.1"/>
+    <circle cx="21" cy="43" r="3.1"/>
+  </g>
+</svg>

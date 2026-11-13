@@ -1,75 +1,55 @@
-import { motion } from 'framer-motion';
 import { profile } from '../data/profile';
+import ChapterHeading from '../components/ui/ChapterHeading';
+import { Reveal } from '../components/ui/Reveal';
+import TiltCard from '../components/ui/TiltCard';
+import Marquee from '../components/ui/Marquee';
 
-const Skills = () => {
-    return (
-        <section id="skills" className="py-24 bg-slate-900/30 relative">
-            <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-3xl z-0 pointer-events-none"></div>
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="flex items-center gap-2 mb-12">
-                    <span className="text-primary font-mono text-xl">#</span>
-                    <span className="text-secondary font-semibold uppercase tracking-wider text-sm">Tech Stack</span>
-                </div>
+const half = Math.ceil(profile.skills.length / 2);
+const rowA = profile.skills.slice(0, half);
+const rowB = profile.skills.slice(half);
 
-                <h2 className="text-3xl md:text-5xl font-extrabold mb-16 text-white tracking-tight">
-                    Expertise & <span className="text-gradient">Tools</span>
-                </h2>
+const Chip = ({ skill }) => (
+    <div className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 px-6 py-4 backdrop-blur transition-colors hover:border-primary/50">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-slate-800 bg-slate-950 p-2.5">
+            <img src={skill.iconUrl} alt="" loading="lazy" className="h-full w-full object-contain" />
+        </span>
+        <span className="whitespace-nowrap text-sm font-bold text-slate-100">{skill.name}</span>
+    </div>
+);
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    {profile.skills.map((skill, index) => {
-                        return (
-                            <motion.div
-                                key={skill.name}
-                                whileHover={{ y: -5, scale: 1.02 }}
-                                className="bg-slate-900/80 backdrop-blur-sm p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all group text-center shadow-lg hover:shadow-[0_0_30px_rgba(56,189,248,0.15)] relative overflow-hidden"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+const Skills = () => (
+    <section id="skills" className="relative overflow-hidden py-28">
+        <div className="container mx-auto px-6">
+            <ChapterHeading number="03" kicker="Tech Stack" title="Expertise &" accent="Tools" />
+        </div>
 
-                                <div className="mb-6 mx-auto w-16 h-16 flex items-center justify-center bg-slate-950 rounded-2xl group-hover:bg-primary/10 transition-all border border-slate-800 group-hover:border-primary/30 shadow-inner p-3">
-                                    <img src={skill.iconUrl} alt={skill.name} className="w-full h-full object-contain filter drop-shadow-md" />
-                                </div>
-                                <h3 className="font-bold text-slate-200 mb-4 text-sm group-hover:text-white transition-colors">{skill.name}</h3>
-                                <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-800/50">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: `${skill.level}%` }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 1, delay: index * 0.1 }}
-                                        className="bg-gradient-to-r from-primary to-secondary h-full relative"
-                                    >
-                                        <div className="absolute right-0 top-0 bottom-0 w-4 bg-white/30 blur-sm"></div>
-                                    </motion.div>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </div>
+        <Reveal className="space-y-4">
+            <Marquee speed={46}>{rowA.map((s) => <Chip key={s.name} skill={s} />)}</Marquee>
+            <Marquee speed={52} reverse>{rowB.map((s) => <Chip key={s.name} skill={s} />)}</Marquee>
+        </Reveal>
 
-                <div className="mt-24">
-                    <h3 className="text-2xl font-bold text-white mb-10">Full <span className="text-gradient">Skill Set</span></h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        {profile.skillGroups.map((group, i) => (
-                            <motion.div
-                                key={group.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
-                                className="min-w-0 bg-slate-900/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-800 hover:border-primary/30 transition-all"
-                            >
-                                <h4 className="text-sm font-bold uppercase tracking-wider text-secondary mb-4">{group.title}</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {group.items.map((item) => (
-                                        <span key={item} className="px-3 py-1 text-xs font-medium text-slate-300 bg-slate-950 border border-slate-800 rounded-full">{item}</span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
+        <div className="container mx-auto mt-24 px-6">
+            <Reveal>
+                <h3 className="mb-10 text-2xl font-bold text-white">
+                    Full <span className="text-gradient">skill set</span>
+                </h3>
+            </Reveal>
+            <div className="grid gap-6 md:grid-cols-2">
+                {profile.skillGroups.map((group, i) => (
+                    <Reveal key={group.title} delay={(i % 2) * 0.1}>
+                        <TiltCard max={4} className="h-full min-w-0 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur transition-colors hover:border-primary/30">
+                            <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-secondary">{group.title}</h4>
+                            <div className="flex flex-wrap gap-2">
+                                {group.items.map((item) => (
+                                    <span key={item} className="rounded-full border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-medium text-slate-300">{item}</span>
+                                ))}
+                            </div>
+                        </TiltCard>
+                    </Reveal>
+                ))}
             </div>
-        </section>
-    );
-};
+        </div>
+    </section>
+);
 
 export default Skills;
