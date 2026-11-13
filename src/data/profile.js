@@ -9,7 +9,7 @@ export const profile = {
   headline: "Implementing AI automation for industrial products: computer vision, edge AI and generative AI, taken from prototype to production.",
   // The hero types each phrase in turn (split on " | ").
   subHeadline: "AI Automation Engineer | Implementation Expert | Forward Deployed Engineer | Computer Vision & Edge AI | Generative AI",
-  location: "Coimbatore, Tamil Nadu, India",
+  location: "Bengaluru, Karnataka, India",
   // The Resume button and the dev server both use this file. To publish a new resume: drop it in public/assets and change these two lines.
   resume: { file: "/assets/AI_Engineer_SesanD_112026.docx", name: "AI_Engineer_SesanD_112026.docx" },
 
