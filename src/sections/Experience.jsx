@@ -26,7 +26,12 @@ const Experience = () => {
                             <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 bg-primary rounded-full shadow-[0_0_10px_#38bdf8]" />
                             <div className="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 hover:border-primary/30 transition-all">
                                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
-                                    <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
+                                        {exp.roleNote && (
+                                            <span className="inline-block mt-2 px-3 py-1 text-xs font-semibold text-secondary bg-secondary/10 border border-secondary/30 rounded-full">{exp.roleNote}</span>
+                                        )}
+                                    </div>
                                     <span className="self-start px-4 py-1 bg-slate-800 text-primary text-xs font-bold rounded-full border border-slate-700 whitespace-nowrap">{exp.period}</span>
                                 </div>
                                 <h4 className="text-lg text-secondary font-medium mb-4">{exp.company}</h4>

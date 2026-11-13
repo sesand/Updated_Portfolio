@@ -4,15 +4,17 @@
 
 export const profile = {
   name: "Sesan Duraisamy",
-  role: "AI/ML Engineer",
-  headline: "Building production-ready Computer Vision, Edge AI and Generative AI systems, from GPU-optimized RTSP video analytics to LLM and RAG automation.",
+  role: "AI Automation Engineer & Implementation Expert",
+  roleNote: "Forward Deployed Engineer",
+  headline: "Implementing AI automation for industrial products: computer vision, edge AI and generative AI, taken from prototype to production.",
   // The hero types each phrase in turn (split on " | ").
-  subHeadline: "AI/ML Engineer | Computer Vision | Generative AI | Edge AI | Production AI Systems",
+  subHeadline: "AI Automation Engineer | Implementation Expert | Forward Deployed Engineer | Computer Vision & Edge AI | Generative AI",
   location: "Coimbatore, Tamil Nadu, India",
 
-  about: "AI/ML Engineer with 2+ years of experience building production-ready Computer Vision, Edge AI, Generative AI, and automation solutions. Skilled in developing real-time video analytics, face recognition, ANPR, and LLM/RAG-based applications for surveillance, healthcare, identity management, traffic analytics, and business operations. Strong focus on converting AI models into practical business applications with APIs, dashboards, and cloud/on-premise deployment workflows.",
+  about: "AI Automation Engineer and implementation expert (Forward Deployed Engineer) working on industrial products. 2+ years of experience building production-ready Computer Vision, Edge AI, Generative AI, and automation solutions. Skilled in developing real-time video analytics, face recognition, ANPR, and LLM/RAG-based applications for surveillance, healthcare, identity management, traffic analytics, and business operations. Strong focus on converting AI models into practical business applications with APIs, dashboards, and cloud/on-premise deployment workflows.",
 
   coreExpertise: [
+    { title: "AI Automation & Implementation", text: "Forward Deployed Engineering: implementing AI automation and getting AI solutions deployed and running for industrial products" },
     { title: "Computer Vision", text: "Real-time video analytics, face recognition, anti-spoofing, object detection, tracking, OCR, ANPR" },
     { title: "AI/ML Engineering", text: "Machine learning, deep learning, model development, model evaluation, inference optimization" },
     { title: "Generative AI", text: "LLM integration, RAG pipelines, AI agents, tool calling, prompt engineering" },
@@ -40,6 +42,7 @@ export const profile = {
     { title: "ML / Deep Learning", items: ["PyTorch", "TensorFlow", "NumPy", "Scikit-learn", "Model training", "Evaluation", "Optimization"] },
     { title: "Computer Vision", items: ["OpenCV", "YOLOv8", "InsightFace", "Object detection", "Face recognition", "Tracking", "OCR", "Anti-spoofing", "Image processing"] },
     { title: "Generative AI", items: ["LLM integration", "RAG pipelines", "Prompt engineering", "Tool calling", "LangChain", "LangGraph", "CrewAI"] },
+    { title: "AI Automation", items: ["AI workflow automation", "LLM-based automation", "Agent-based API orchestration", "Tool calling", "n8n", "API integration"] },
     { title: "Backend & APIs", items: ["FastAPI", "REST APIs", "WebSockets", "API integration", "Backend services"] },
     { title: "Streaming & Optimization", items: ["RTSP", "FFmpeg", "ONNX Runtime", "OpenVINO", "GPU inference", "FP16 & INT8 quantization"] },
     { title: "Deployment & Tools", items: ["Docker", "Podman", "Microsoft Azure", "On-premise GPU servers", "Edge deployment", "Linux", "Windows", "GitHub", "VS Code", "CVAT", "Roboflow"] },
@@ -47,12 +50,14 @@ export const profile = {
 
   experience: [
     {
-      role: "AI Engineer",
+      role: "AI Automation Engineer & Implementation Expert",
+      roleNote: "Forward Deployed Engineer",
       company: "PrimeMover Solutions",
       period: "May 2024 – Present",
       location: "Coimbatore, Tamil Nadu",
-      description: "Designed and deployed real-time Computer Vision and AI systems for surveillance, healthcare, identity management, traffic analytics, and business automation use cases.",
+      description: "AI automation engineer and implementation expert (Forward Deployed Engineer), working on industrial products and getting AI solutions implemented and running.",
       highlights: [
+        "Designed and deployed real-time Computer Vision and AI systems for surveillance, healthcare, identity management, traffic analytics, and business automation use cases.",
         "Built production-ready AI inference pipelines using Python, FastAPI, OpenCV, PyTorch, ONNX Runtime, and GPU-optimized deployment workflows.",
         "Developed RTSP-based multi-camera video analytics architectures for continuous real-time monitoring, alert generation, and dashboard integration.",
         "Implemented face recognition, anti-spoofing validation, object detection, ANPR, OCR, and tracking workflows for AI-powered applications.",
@@ -61,7 +66,7 @@ export const profile = {
         "Integrated LLM-based automation workflows, RAG pipelines, and agent-based API orchestration into practical business applications.",
         "Collaborated with cross-functional teams to convert AI prototypes into usable, deployable, and business-ready software products.",
       ],
-      tech: ["Python", "FastAPI", "PyTorch", "OpenCV", "ONNX Runtime", "OpenVINO", "Docker", "RTSP"],
+      tech: ["AI Automation", "Python", "FastAPI", "PyTorch", "OpenCV", "ONNX Runtime", "OpenVINO", "Docker", "RTSP"],
     },
     {
       role: "Machine Learning Engineer Intern",
@@ -97,8 +102,16 @@ export const profile = {
     { name: "English", level: "Professional working proficiency" },
   ],
 
-  // The five "Key Projects" on the resume come first, then the other work.
+  // Industrial products first, then the five "Key Projects" from the resume, then the other work.
   projects: [
+    {
+      title: "Industrial AI Products",
+      description: "Hands-on work on industrial AI products as the implementation expert (Forward Deployed Engineer): AI automation, computer vision and edge deployment. The details are kept high-level here; get in touch to talk about it.",
+      tech: ["AI Automation", "Computer Vision", "Edge AI", "Implementation"],
+      link: "#",
+      codeLink: "https://github.com/sesand",
+      image: "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=1000&auto=format&fit=crop"
+    },
     {
       title: "SnapFace – Real-Time Face Recognition & Attendance",
       description: "Production-ready face recognition system using dual RTSP camera streams, InsightFace, ONNX Runtime, FastAPI, and OpenCV. Includes anti-spoofing validation, live monitoring, automated alerts, secure role-based access, and attendance workflows, with GPU-optimized inference for stable, low-latency continuous streaming and on-premise deployment.",
