@@ -52,12 +52,20 @@ export const profile = {
     {
       role: "AI Automation Engineer & Implementation Expert",
       roleNote: "Forward Deployed Engineer",
+      company: "Surin Automotive Private Limited",
+      period: "Present",
+      location: "Bengaluru, Karnataka",
+      description: "Working on industrial AI products as an AI Automation Engineer and implementation expert (Forward Deployed Engineer), implementing and deploying AI automation solutions.",
+      highlights: [],
+      tech: ["AI Automation", "Industrial Products", "Implementation"],
+    },
+    {
+      role: "AI Engineer",
       company: "PrimeMover Solutions",
       period: "May 2024 – Present",
       location: "Coimbatore, Tamil Nadu",
-      description: "AI automation engineer and implementation expert (Forward Deployed Engineer), working on industrial products and getting AI solutions implemented and running.",
+      description: "Designed and deployed real-time Computer Vision and AI systems for surveillance, healthcare, identity management, traffic analytics, and business automation use cases.",
       highlights: [
-        "Designed and deployed real-time Computer Vision and AI systems for surveillance, healthcare, identity management, traffic analytics, and business automation use cases.",
         "Built production-ready AI inference pipelines using Python, FastAPI, OpenCV, PyTorch, ONNX Runtime, and GPU-optimized deployment workflows.",
         "Developed RTSP-based multi-camera video analytics architectures for continuous real-time monitoring, alert generation, and dashboard integration.",
         "Implemented face recognition, anti-spoofing validation, object detection, ANPR, OCR, and tracking workflows for AI-powered applications.",
@@ -66,7 +74,7 @@ export const profile = {
         "Integrated LLM-based automation workflows, RAG pipelines, and agent-based API orchestration into practical business applications.",
         "Collaborated with cross-functional teams to convert AI prototypes into usable, deployable, and business-ready software products.",
       ],
-      tech: ["AI Automation", "Python", "FastAPI", "PyTorch", "OpenCV", "ONNX Runtime", "OpenVINO", "Docker", "RTSP"],
+      tech: ["Python", "FastAPI", "PyTorch", "OpenCV", "ONNX Runtime", "OpenVINO", "Docker", "RTSP"],
     },
     {
       role: "Machine Learning Engineer Intern",
