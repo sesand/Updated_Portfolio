@@ -1,5 +1,5 @@
 // Single source of truth for the whole portfolio.
-// Content below follows the June 2026 resume (public/assets/AI_Engineer_SesanD_062026.docx).
+// Content follows the resume in public/assets (see "resume" below), with the current role added.
 // Edit this file to change what the site shows; the section components only render it.
 
 export const profile = {
@@ -10,6 +10,8 @@ export const profile = {
   // The hero types each phrase in turn (split on " | ").
   subHeadline: "AI Automation Engineer | Implementation Expert | Forward Deployed Engineer | Computer Vision & Edge AI | Generative AI",
   location: "Coimbatore, Tamil Nadu, India",
+  // The Resume button and the dev server both use this file. To publish a new resume: drop it in public/assets and change these two lines.
+  resume: { file: "/assets/AI_Engineer_SesanD_112026.docx", name: "AI_Engineer_SesanD_112026.docx" },
 
   about: "AI Automation Engineer and implementation expert (Forward Deployed Engineer) working on industrial products. 2+ years of experience building production-ready Computer Vision, Edge AI, Generative AI, and automation solutions. Skilled in developing real-time video analytics, face recognition, ANPR, and LLM/RAG-based applications for surveillance, healthcare, identity management, traffic analytics, and business operations. Strong focus on converting AI models into practical business applications with APIs, dashboards, and cloud/on-premise deployment workflows.",
 
@@ -53,7 +55,7 @@ export const profile = {
       role: "AI Automation Engineer & Implementation Expert",
       roleNote: "Forward Deployed Engineer",
       company: "Surin Automotive Private Limited",
-      period: "Present",
+      period: "Sep 2026 – Present",
       location: "Bengaluru, Karnataka",
       description: "Working on industrial AI products as an AI Automation Engineer and implementation expert (Forward Deployed Engineer), implementing and deploying AI automation solutions.",
       highlights: [],
@@ -62,7 +64,7 @@ export const profile = {
     {
       role: "AI Engineer",
       company: "PrimeMover Solutions",
-      period: "May 2024 – Present",
+      period: "May 2024 – Sep 2026",
       location: "Coimbatore, Tamil Nadu",
       description: "Designed and deployed real-time Computer Vision and AI systems for surveillance, healthcare, identity management, traffic analytics, and business automation use cases.",
       highlights: [

@@ -17,7 +17,7 @@ export default defineConfig({
             const filePath = path.join(process.cwd(), 'public', cleanUrl);
             if (fs.existsSync(filePath)) {
               res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-              res.setHeader('Content-Disposition', 'attachment; filename="AI_Engineer_SesanD_062026.docx"');
+              res.setHeader('Content-Disposition', `attachment; filename="${path.basename(cleanUrl)}"`);
               res.end(fs.readFileSync(filePath));
               return;
             }
