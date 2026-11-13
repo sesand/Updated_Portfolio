@@ -26,11 +26,16 @@ const CustomCursor = () => {
       }
     };
 
+    const onLeave = (e) => {
+      if (!e.relatedTarget) setSeen(false);
+    };
     window.addEventListener('mousemove', updateMousePosition);
+    document.addEventListener('mouseout', onLeave);
     window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
+      document.removeEventListener('mouseout', onLeave);
       window.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);

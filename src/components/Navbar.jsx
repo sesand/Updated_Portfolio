@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Play } from 'lucide-react';
+import { Download, Menu, Play, X } from 'lucide-react';
 import { profile } from '../data/profile';
 import Logo from './Logo';
 import { useStory } from '../story/StoryContext';
@@ -38,14 +38,14 @@ const Navbar = () => {
             <div className="container mx-auto flex items-center justify-between px-6">
                 <a href="#home" className="flex shrink-0 items-center gap-3 whitespace-nowrap font-bold tracking-tighter text-white" aria-label={`${profile.name} — home`}>
                     <Logo size={44} />
-                    <span className="hidden text-lg sm:block">{profile.name}</span>
+                    <span className="hidden text-lg sm:block lg:hidden xl:block">{profile.name}</span>
                 </a>
 
-                <div className="hidden items-center gap-6 whitespace-nowrap xl:flex">
+                <div className="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-6">
                     {navLinks.map((link) => (
                         <a key={link.name} href={link.href} className="text-sm font-medium text-slate-400 transition-colors hover:text-primary">{link.name}</a>
                     ))}
-                    <div className="flex items-center gap-3 border-l border-slate-700 pl-6">
+                    <div className="flex items-center gap-3 border-l border-slate-700 pl-5 xl:pl-6">
                         <button
                             type="button"
                             onClick={playStory}
@@ -54,7 +54,7 @@ const Navbar = () => {
                             <Play size={14} fill="currentColor" /> Play story
                         </button>
                         <a href={profile.resume.file} download={profile.resume.name} className="flex shrink-0 items-center gap-2 whitespace-nowrap text-sm font-medium text-slate-400 transition-colors hover:text-primary" title="Download Resume">
-                            <Download size={16} /> Resume
+                            <Download size={16} /> <span className="hidden xl:inline">Resume</span>
                         </a>
                         <a href={`mailto:${profile.social.email}`} className="shrink-0 whitespace-nowrap rounded-full bg-gradient-to-r from-primary to-secondary px-5 py-2 text-sm font-bold text-slate-950 shadow-lg shadow-primary/25 transition-all hover:opacity-90">Hire me</a>
                     </div>
@@ -62,16 +62,17 @@ const Navbar = () => {
 
                 <button
                     type="button"
-                    className="font-bold text-white xl:hidden"
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-slate-950/60 text-white backdrop-blur lg:hidden"
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     aria-expanded={isMenuOpen}
                     onClick={() => setIsMenuOpen((v) => !v)}
                 >
-                    {isMenuOpen ? 'CLOSE' : 'MENU'}
+                    {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
                 </button>
             </div>
 
             {isMenuOpen && (
-                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="absolute left-0 top-full flex w-full flex-col gap-4 border-b border-slate-800 bg-slate-900 p-6 shadow-xl xl:hidden">
+                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="absolute left-0 top-full flex w-full flex-col gap-4 border-b border-slate-800 bg-slate-900 p-6 shadow-xl lg:hidden">
                     {navLinks.map((link) => (
                         <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-slate-300 hover:text-primary">{link.name}</a>
                     ))}
