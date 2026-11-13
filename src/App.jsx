@@ -63,10 +63,6 @@ function Site() {
           <Logo size={40} animate={false} />
           <p className="text-sm text-slate-500">&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
           <p className="text-xs text-slate-600">{profile.role} Portfolio</p>
-          <p className="text-[11px] text-slate-700">
-            Background video: neural network loop by Nicola Narracci via{' '}
-            <a href="https://www.pexels.com" target="_blank" rel="noreferrer" className="underline hover:text-slate-500">Pexels</a>
-          </p>
         </footer>
       </div>
     </main>
