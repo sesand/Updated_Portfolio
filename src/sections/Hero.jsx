@@ -8,7 +8,6 @@ import TiltCard from '../components/ui/TiltCard';
 import { GitHubIcon, LinkedInIcon } from '../components/icons';
 import { useStory } from '../story/StoryContext';
 import { useMotionPref } from '../story/MotionContext';
-import { canPlayVideo } from '../story/capabilities';
 
 const profileImages = [
   '/assets/profile.jpg',
@@ -22,55 +21,11 @@ const profileImages = [
 ];
 
 const BADGES = [
-  { text: 'Computer Vision', pos: '-left-2 top-10 md:-left-10', delay: 0 },
-  { text: 'Edge AI', pos: '-right-2 top-24 md:-right-10', delay: 0.8 },
-  { text: 'Generative AI', pos: '-left-2 bottom-24 md:-left-12', delay: 1.6 },
-  { text: 'Forward Deployed Engineer', pos: '-right-2 bottom-10 md:-right-8', delay: 2.4 },
+  { text: 'Computer Vision', pos: '-left-2 top-10 md:-left-8', delay: 0 },
+  { text: 'Edge AI', pos: '-right-2 top-20 md:-right-6', delay: 0.8 },
+  { text: 'Generative AI', pos: '-left-2 bottom-36 md:-left-8', delay: 1.6 },
+  { text: 'Industrial AI', pos: '-right-2 bottom-28 md:-right-6', delay: 2.4 },
 ];
-
-/** Looping neural-network video behind the hero. Poster image only when motion is off or data saver is on. */
-function HeroVideo({ sectionRef }) {
-  const { reduce } = useMotionPref();
-  const videoRef = useRef(null);
-  const allowed = canPlayVideo(reduce);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
-
-  // only play while the hero is on screen
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v || !allowed) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) v.play().catch(() => {});
-      else v.pause();
-    });
-    io.observe(v);
-    return () => io.disconnect();
-  }, [allowed]);
-
-  return (
-    <motion.div style={{ opacity, scale }} className="absolute inset-0 z-0" aria-hidden="true">
-      {allowed ? (
-        <video
-          ref={videoRef}
-          className="h-full w-full object-cover opacity-80 mix-blend-screen"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/assets/video/neural-poster.jpg"
-          disablePictureInPicture
-        >
-          <source src="/assets/video/neural-loop.mp4" type="video/mp4" />
-        </video>
-      ) : (
-        <img src="/assets/video/neural-poster.jpg" alt="" className="h-full w-full object-cover opacity-50 mix-blend-screen" />
-      )}
-    </motion.div>
-  );
-}
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -90,7 +45,6 @@ const Hero = () => {
 
   return (
     <section id="home" ref={sectionRef} className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-28">
-      <HeroVideo sectionRef={sectionRef} />
       {/* legibility + blend into the next section */}
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-slate-950/85 via-slate-950/35 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-48 bg-gradient-to-t from-slate-950 to-transparent" />
@@ -182,19 +136,20 @@ const Hero = () => {
                 <div className="absolute bottom-6 right-6 h-14 w-14 rounded-br-[1.2rem] border-b-2 border-r-2 border-accent/60" />
                 <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-slate-800">
                   <AnimatePresence mode="wait">
-                    <motion.img
+                    <motion.div
                       key={currentImageIndex}
-                      src={profileImages[currentImageIndex]}
-                      alt="Sesan Duraisamy"
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="absolute inset-0"
                       initial={{ opacity: 0, scale: 1.06 }}
-                      animate={{ opacity: 0.95, scale: 1 }}
+                      animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.96 }}
                       transition={{ duration: 0.8 }}
-                    />
+                    >
+                      {/* blurred copy fills the frame; the photo itself is shown whole, never cropped */}
+                      <img src={profileImages[currentImageIndex]} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-2xl" />
+                      <img src={profileImages[currentImageIndex]} alt="Sesan Duraisamy" className="absolute inset-x-0 top-0 h-[calc(100%-5.5rem)] w-full object-contain" />
+                    </motion.div>
                   </AnimatePresence>
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-5 left-5 right-5 rounded-xl border border-white/10 bg-slate-950/80 p-4 backdrop-blur-md">
+                  <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-white/10 bg-slate-950/85 px-4 py-3 backdrop-blur-md">
                     <p className="text-sm font-bold text-white">{profile.name}</p>
                     <p className="text-xs font-bold uppercase tracking-widest text-primary">{profile.roleNote}</p>
                   </div>

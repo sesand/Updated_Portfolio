@@ -25,7 +25,9 @@ export function MotionProvider({ children }) {
     const [override, setOverrideState] = useState(readOverride);
     const [os] = useState(osPrefersReducedMotion);
 
-    const reduce = override === 'off' ? true : override === 'on' ? false : os;
+    // Motion is ON by default (the site is built around it). The visitor can switch it off with the
+    // Motion toggle in the navbar; that choice is remembered. The OS setting is only used for the tooltip.
+    const reduce = override === 'off';
 
     const setOverride = useCallback((v) => {
         setOverrideState(v);

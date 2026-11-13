@@ -4,6 +4,7 @@ import { Download, Play } from 'lucide-react';
 import { profile } from '../data/profile';
 import Logo from './Logo';
 import { useStory } from '../story/StoryContext';
+import { MotionToggle } from '../story/StoryHUD';
 
 const navLinks = [
     { name: 'About', href: '#about' },
@@ -41,11 +42,12 @@ const Navbar = () => {
                     <span className="hidden text-lg sm:block">{profile.name}</span>
                 </a>
 
-                <div className="hidden items-center gap-7 md:flex">
+                <div className="hidden items-center gap-6 lg:flex">
                     {navLinks.map((link) => (
                         <a key={link.name} href={link.href} className="text-sm font-medium text-slate-400 transition-colors hover:text-primary">{link.name}</a>
                     ))}
-                    <div className="flex items-center gap-4 border-l border-slate-700 pl-7">
+                    <div className="flex items-center gap-3 border-l border-slate-700 pl-6">
+                        <MotionToggle />
                         <button
                             type="button"
                             onClick={playStory}
@@ -62,7 +64,7 @@ const Navbar = () => {
 
                 <button
                     type="button"
-                    className="font-bold text-white md:hidden"
+                    className="font-bold text-white lg:hidden"
                     aria-expanded={isMenuOpen}
                     onClick={() => setIsMenuOpen((v) => !v)}
                 >
@@ -71,10 +73,11 @@ const Navbar = () => {
             </div>
 
             {isMenuOpen && (
-                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="absolute left-0 top-full flex w-full flex-col gap-4 border-b border-slate-800 bg-slate-900 p-6 shadow-xl md:hidden">
+                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="absolute left-0 top-full flex w-full flex-col gap-4 border-b border-slate-800 bg-slate-900 p-6 shadow-xl lg:hidden">
                     {navLinks.map((link) => (
                         <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-slate-300 hover:text-primary">{link.name}</a>
                     ))}
+                    <MotionToggle className="self-start" />
                     <button type="button" onClick={playStory} className="flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 py-3 font-bold text-primary">
                         <Play size={16} fill="currentColor" /> Play story
                     </button>

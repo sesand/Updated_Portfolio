@@ -13,7 +13,8 @@ import Logo from './components/Logo';
 import { profile } from './data/profile';
 import { MotionProvider, useMotionPref } from './story/MotionContext';
 import { StoryProvider, useStory } from './story/StoryContext';
-import { graphicsTier } from './story/capabilities';
+import { canPlayVideo, graphicsTier } from './story/capabilities';
+import ScrollVideo from './story/ScrollVideo';
 import StoryHUD from './story/StoryHUD';
 
 // three.js is heavy: load it only when the device can actually render the 3D world.
@@ -26,6 +27,11 @@ function Backdrop() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+      {canPlayVideo(reduce) ? (
+        <ScrollVideo />
+      ) : (
+        <img src="/assets/video/neural-poster.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-screen" />
+      )}
       {tier === 'off' ? (
         <Particles />
       ) : (
