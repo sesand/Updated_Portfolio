@@ -120,7 +120,7 @@ export const profile = {
       tech: ["AI Automation", "Computer Vision", "Edge AI", "Implementation"],
       link: "#",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "factory", accent: "#38bdf8" }
     },
     {
       title: "SnapFace – Real-Time Face Recognition & Attendance",
@@ -128,7 +128,7 @@ export const profile = {
       tech: ["Python", "FastAPI", "InsightFace", "OpenCV", "ONNX Runtime", "RTSP", "Docker"],
       link: "https://www.primemoversolutions.in/ai-in-actions/",
       codeLink: "https://github.com/sesand",
-      image: "https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=800"
+      cover: { motif: "face", accent: "#22d3ee" }
     },
     {
       title: "SpeedVision AI – Video Analytics, ANPR & Speed Detection",
@@ -136,7 +136,7 @@ export const profile = {
       tech: ["Python", "YOLOv8", "OpenCV", "FFmpeg", "Tesseract OCR", "FastAPI", "RTSP"],
       link: "https://www.primemoversolutions.in/speed-vision-ai/",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "traffic", accent: "#fbbf24" }
     },
     {
       title: "AI-Enhanced LMS – Learning & Assessment Platform",
@@ -144,7 +144,7 @@ export const profile = {
       tech: ["Python", "FastAPI", "LangChain", "LangGraph", "CrewAI", "RAG", "Tool Calling"],
       link: "https://www.primemoversolutions.in/lms/",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "llm", accent: "#a78bfa" }
     },
     {
       title: "MedToolVision – Edge AI Surgical Tool Tracking",
@@ -152,7 +152,7 @@ export const profile = {
       tech: ["Python", "OpenCV", "YOLOv8", "Raspberry Pi CM4", "Edge AI"],
       link: "https://www.primemoversolutions.in/ai-co-pilot-for-laparoscopy/",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "edge", accent: "#34d399" }
     },
     {
       title: "Postal Sign Recognition System",
@@ -170,7 +170,7 @@ export const profile = {
       tech: ["Computer Vision", "Deep Learning", "Quality Assurance"],
       link: "https://www.primemoversolutions.in/defectxpert/",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "defect", accent: "#38bdf8" }
     },
     {
       title: "Hotel Tariff Forecasting AI",
@@ -178,7 +178,7 @@ export const profile = {
       tech: ["Machine Learning", "Time Series Forecasting", "Python"],
       link: "https://www.primemoversolutions.in/hotel-booking-ai/",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "forecast", accent: "#f59e0b" }
     },
     {
       title: "Edhaa Solutions",
@@ -186,7 +186,7 @@ export const profile = {
       tech: ["AI Analytics", "Enterprise Automation", "FastAPI"],
       link: "https://www.primemoversolutions.in/edhaa/",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "dashboard", accent: "#818cf8" }
     },
     {
       title: "Video Summarization Agent",
@@ -202,7 +202,7 @@ export const profile = {
       tech: ["YOLO", "Roboflow", "CVAT", "Computer Vision"],
       link: "https://www.linkedin.com/posts/sesan-duraisamy-76474a219_sam3-metaai-computervision-activity-7398268250318491648-DEZk?utm_source=share&utm_medium=member_desktop&rcm=ACoAADca77wBDnJylgS6qCFoYFhpAeoH0z8vsSE",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "annotate", accent: "#38bdf8" }
     },
     {
       title: "Light Detection Automation",
@@ -210,7 +210,7 @@ export const profile = {
       tech: ["IoT", "Edge AI", "Sensors"],
       link: "#",
       codeLink: "https://github.com/sesand",
-      image: "https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=800"
+      cover: { motif: "iot", accent: "#facc15" }
     },
     {
       title: "Email Automation using n8n",
@@ -218,7 +218,7 @@ export const profile = {
       tech: ["n8n", "Workflow Automation", "API Integration"],
       link: "https://www.linkedin.com/posts/sesan-duraisamy-76474a219_aiproductivity-executivetools-meetingscheduler-activity-7364324468460027906-XdGg?utm_source=share&utm_medium=member_desktop&rcm=ACoAADca77wBDnJylgS6qCFoYFhpAeoH0z8vsSE",
       codeLink: "https://github.com/sesand",
-      image: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=1000&auto=format&fit=crop"
+      cover: { motif: "workflow", accent: "#f472b6" }
     }
   ],
 

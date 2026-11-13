@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, X } from 'lucide-react';
+import ProjectCover from './ProjectCover';
 
 /**
  * Project details. The whole card scrolls as one (picture, description, stack, link), so there is always
@@ -72,18 +73,36 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               className="modal-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain"
               tabIndex={0}
             >
-              <div className="relative flex min-h-[13rem] shrink-0 items-end sm:min-h-[16rem]">
-                <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
-                <div className="relative w-full p-6 pt-20 sm:p-8 sm:pt-16">
-                  <h2 className="mb-4 text-2xl font-black tracking-tight text-white drop-shadow-lg sm:text-4xl">{project.title}</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((t) => (
-                      <span key={t} className="rounded-full border border-primary/25 bg-slate-950/70 px-3 py-1 text-xs font-bold text-primary backdrop-blur-md">{t}</span>
-                    ))}
+              {project.cover ? (
+                <>
+                  {/* cover art as a clean banner, title underneath (never on top of the illustration) */}
+                  <div className="relative h-52 shrink-0 sm:h-72">
+                    <ProjectCover {...project.cover} label={project.title} className="absolute inset-0 h-full w-full" />
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 to-transparent" />
+                  </div>
+                  <div className="px-6 pt-2 sm:px-8">
+                    <h2 className="mb-4 text-2xl font-black tracking-tight text-white sm:text-4xl">{project.title}</h2>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((t) => (
+                        <span key={t} className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-bold text-primary">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="relative flex min-h-[13rem] shrink-0 items-end sm:min-h-[16rem]">
+                  <img src={project.image} alt={project.title} className="absolute inset-0 h-full w-full object-cover opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+                  <div className="relative w-full p-6 pt-20 sm:p-8 sm:pt-16">
+                    <h2 className="mb-4 text-2xl font-black tracking-tight text-white drop-shadow-lg sm:text-4xl">{project.title}</h2>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((t) => (
+                        <span key={t} className="rounded-full border border-primary/25 bg-slate-950/70 px-3 py-1 text-xs font-bold text-primary backdrop-blur-md">{t}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               <div className="p-6 sm:p-8">
                 <p className="mb-8 text-base leading-relaxed text-slate-200 sm:text-lg">{project.description}</p>
