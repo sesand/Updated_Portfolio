@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { profile } from '../data/profile';
 
@@ -72,7 +71,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <p className="text-slate-500 text-sm font-medium mb-1 uppercase tracking-widest">Location</p>
-                                    <p className="text-white font-bold text-lg">Coimbatore, Tamil Nadu</p>
+                                    <p className="text-white font-bold text-lg">{profile.location}</p>
                                 </div>
                             </div>
                             
@@ -105,13 +104,13 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-slate-900/50 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden"
+                        className="min-w-0 bg-slate-900/50 backdrop-blur-xl p-6 sm:p-8 md:p-10 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-[50px] pointer-events-none"></div>
                         <h3 className="text-2xl font-bold text-white mb-8">Send a Message</h3>
                         
                         <form className="space-y-6">
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-slate-400 uppercase tracking-widest text-[10px]">Your Name</label>
                                     <input type="text" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Sesan Duraisamy" required />
@@ -125,7 +124,7 @@ const Contact = () => {
                                 <label className="text-sm font-medium text-slate-400 uppercase tracking-widest text-[10px]">Message</label>
                                 <textarea rows="6" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Type your message here..." required></textarea>
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <button type="button" onClick={(e) => handleSubmit(e, 'email')} className="py-4 bg-primary text-slate-950 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white transition-all shadow-lg shadow-primary/25 hover:-translate-y-1 uppercase tracking-widest text-xs">
                                     Send via Email
                                 </button>

@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { profile } from '../data/profile';
-import Particles from '../components/Particles';
+
+const profileImages = [
+  '/assets/profile.jpg',
+  '/assets/profile_old_backup.jpg',
+  '/assets/profile2.jpg',
+  '/assets/profile3.jpg',
+  '/assets/profile4.jpg',
+  '/assets/profile5.jpg',
+  '/assets/profile6.jpg',
+  '/assets/profile7.jpg',
+];
 
 const Hero = () => {
   const rolesSequence = profile.subHeadline.split(' | ').flatMap(role => [role, 2000]);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const profileImages = [
-    '/assets/profile.jpg',
-    '/assets/profile_old_backup.jpg',
-    '/assets/profile2.jpg',
-    '/assets/profile3.jpg',
-    '/assets/profile4.jpg',
-    '/assets/profile5.jpg',
-    '/assets/profile6.jpg',
-    '/assets/profile7.jpg',
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
