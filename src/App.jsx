@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -6,18 +7,43 @@ import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Achievements from './sections/Achievements';
 import Contact from './sections/Contact';
-import { profile } from './data/profile';
-
 import Particles from './components/Particles';
 import CustomCursor from './components/CustomCursor';
+import Logo from './components/Logo';
+import { profile } from './data/profile';
+import { MotionProvider, useMotionPref } from './story/MotionContext';
+import { StoryProvider, useStory } from './story/StoryContext';
+import { graphicsTier } from './story/capabilities';
+import StoryHUD from './story/StoryHUD';
 
-function App() {
+// three.js is heavy: load it only when the device can actually render the 3D world.
+const World = lazy(() => import('./story/World'));
+
+function Backdrop() {
+  const { reduce } = useMotionPref();
+  const { progress, activeRef } = useStory();
+  const tier = graphicsTier(reduce);
+
   return (
-    <main className="bg-slate-950 min-h-screen text-slate-200 selection:bg-primary/30 selection:text-white relative overflow-x-clip">
-      <CustomCursor />
-      <div className="fixed inset-0 z-0 pointer-events-none">
+    <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+      {tier === 'off' ? (
         <Particles />
-      </div>
+      ) : (
+        <Suspense fallback={<Particles />}>
+          <World progressRef={progress} activeRef={activeRef} tier={tier} />
+        </Suspense>
+      )}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(2,6,23,0.75)_100%)]" />
+    </div>
+  );
+}
+
+function Site() {
+  return (
+    <main className="relative min-h-screen overflow-x-clip bg-slate-950 text-slate-200 selection:bg-primary/30 selection:text-white">
+      <CustomCursor />
+      <Backdrop />
+      <StoryHUD />
       <div className="relative z-10">
         <Navbar />
         <Hero />
@@ -27,13 +53,26 @@ function App() {
         <Projects />
         <Achievements />
         <Contact />
-        <footer className="py-8 bg-slate-950 border-t border-slate-900 text-center flex flex-col items-center justify-center gap-4">
-          <p className="text-slate-500 text-sm">&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-          <p className="text-slate-600 text-xs">{profile.role} Portfolio</p>
+        <footer className="flex flex-col items-center gap-3 border-t border-slate-900 bg-slate-950/80 py-10 text-center backdrop-blur">
+          <Logo size={40} animate={false} />
+          <p className="text-sm text-slate-500">&copy; {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+          <p className="text-xs text-slate-600">{profile.role} Portfolio</p>
+          <p className="text-[11px] text-slate-700">
+            Background video: neural network loop by Nicola Narracci via{' '}
+            <a href="https://www.pexels.com" target="_blank" rel="noreferrer" className="underline hover:text-slate-500">Pexels</a>
+          </p>
         </footer>
       </div>
     </main>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <MotionProvider>
+      <StoryProvider>
+        <Site />
+      </StoryProvider>
+    </MotionProvider>
+  );
+}
