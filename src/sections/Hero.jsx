@@ -35,7 +35,7 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setCurrentImageIndex((i) => (i + 1) % profileImages.length), 4000);
+    const interval = setInterval(() => setCurrentImageIndex((i) => (i + 1) % profileImages.length), 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -105,19 +105,19 @@ const Hero = () => {
               <a href={`mailto:${profile.social.email}`} className="flex items-center gap-2 rounded-full border border-slate-700 px-6 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-900">
                 <Mail size={16} /> Contact
               </a>
-              <a href={profile.resume.file} download={profile.resume.name} className="flex items-center gap-2 rounded-full border border-slate-700 px-6 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-900">
-                <Download size={16} /> Resume
-              </a>
             </motion.div>
 
             <div className="mt-12 flex items-center justify-center gap-6 lg:justify-start">
-              <span className="text-sm font-medium uppercase tracking-wider text-slate-400">Connect:</span>
-              <div className="flex items-center gap-3">
+              <span className="hidden text-sm font-medium uppercase tracking-wider text-slate-400 sm:block">Connect:</span>
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <a href={profile.social.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/75 px-4 py-2 text-slate-300 transition hover:border-[#0077b5] hover:text-[#38b6ff]">
                   <LinkedInIcon /> LinkedIn
                 </a>
                 <a href={profile.social.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/75 px-4 py-2 text-slate-300 transition hover:border-white hover:text-white">
                   <GitHubIcon /> GitHub
+                </a>
+                <a href={profile.resume.file} download={profile.resume.name} className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/75 px-4 py-2 text-slate-300 transition hover:border-primary hover:text-white">
+                  <Download size={16} /> Resume
                 </a>
               </div>
             </div>
@@ -135,14 +135,14 @@ const Hero = () => {
                 <div className="absolute left-6 top-6 h-14 w-14 rounded-tl-[1.2rem] border-l-2 border-t-2 border-primary/60" />
                 <div className="absolute bottom-6 right-6 h-14 w-14 rounded-br-[1.2rem] border-b-2 border-r-2 border-accent/60" />
                 <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-slate-800">
-                  <AnimatePresence mode="wait">
+                  <AnimatePresence initial={false}>
                     <motion.div
                       key={currentImageIndex}
                       className="absolute inset-0"
-                      initial={{ opacity: 0, scale: 1.06 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.96 }}
-                      transition={{ duration: 0.8 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.9 }}
                     >
                       {/* blurred copy fills the frame; the photo itself is shown whole, never cropped */}
                       <img src={profileImages[currentImageIndex]} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-2xl" />
@@ -172,7 +172,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <a href="#about" aria-label="Scroll to About" className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-400 transition hover:text-white md:flex">
+      <a href="#about" aria-label="Scroll to About" className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-400 transition hover:text-white [@media(min-height:960px)]:flex">
         Scroll
         <span className="flex h-9 w-5 justify-center rounded-full border border-slate-500 pt-1.5">
           <motion.span className="h-1.5 w-1 rounded-full bg-primary" animate={reduce ? undefined : { y: [0, 12, 0], opacity: [1, 0.2, 1] }} transition={{ duration: 1.8, repeat: Infinity }} />

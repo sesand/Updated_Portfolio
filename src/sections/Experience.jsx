@@ -33,7 +33,7 @@ const Experience = () => {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: '0px 0px -120px 0px' }}
                                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                                    className="relative pl-10"
+                                    className="relative pl-8 sm:pl-10"
                                 >
                                     <motion.span
                                         className="absolute left-0 top-3 h-[15px] w-[15px] rounded-full border-2 border-primary bg-slate-950"
