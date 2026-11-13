@@ -93,16 +93,16 @@ const Hero = () => {
               <button
                 type="button"
                 onClick={play}
-                className="group relative flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-bold text-slate-950 shadow-[0_0_28px_rgba(56,189,248,0.45)] transition hover:-translate-y-0.5 hover:shadow-[0_0_44px_rgba(56,189,248,0.7)]"
+                className="group relative flex items-center gap-3 whitespace-nowrap rounded-full bg-primary px-7 py-3.5 font-bold text-slate-950 shadow-[0_0_28px_rgba(56,189,248,0.45)] transition hover:-translate-y-0.5 hover:shadow-[0_0_44px_rgba(56,189,248,0.7)]"
               >
                 <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-primary/40 [animation-duration:2.6s]" aria-hidden="true" />
                 <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-950 text-primary"><Play size={13} fill="currentColor" className="ml-0.5" /></span>
                 Play my story
               </button>
-              <a href="#projects" className="flex items-center gap-2 rounded-full border border-slate-600 bg-slate-950/40 px-8 py-4 font-bold text-white backdrop-blur-xl transition hover:border-primary hover:bg-slate-900">
+              <a href="#projects" className="flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-600 bg-slate-950/40 px-7 py-3.5 font-bold text-white backdrop-blur-xl transition hover:border-primary hover:bg-slate-900">
                 View Work <ArrowRight size={16} />
               </a>
-              <a href={`mailto:${profile.social.email}`} className="flex items-center gap-2 rounded-full border border-slate-700 px-6 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-900">
+              <a href={`mailto:${profile.social.email}`} className="flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-700 px-6 py-3.5 font-bold text-white transition hover:border-slate-500 hover:bg-slate-900">
                 <Mail size={16} /> Contact
               </a>
             </motion.div>
@@ -172,12 +172,6 @@ const Hero = () => {
         </div>
       </div>
 
-      <a href="#about" aria-label="Scroll to About" className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-400 transition hover:text-white [@media(min-height:960px)]:flex">
-        Scroll
-        <span className="flex h-9 w-5 justify-center rounded-full border border-slate-500 pt-1.5">
-          <motion.span className="h-1.5 w-1 rounded-full bg-primary" animate={reduce ? undefined : { y: [0, 12, 0], opacity: [1, 0.2, 1] }} transition={{ duration: 1.8, repeat: Infinity }} />
-        </span>
-      </a>
     </section>
   );
 };

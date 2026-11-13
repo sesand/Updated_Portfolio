@@ -109,3 +109,9 @@
 /* when the Motion toggle is off nothing loops */
 html[data-motion="off"] .marquee-track { animation: none; }
 html[data-motion="off"] * { scroll-behavior: auto !important; }
+
+/* project-details card: a scrollbar you can actually see and grab */
+.modal-scroll { scrollbar-width: thin; scrollbar-color: #38bdf8 #0f172a; }
+.modal-scroll::-webkit-scrollbar { width: 10px; }
+.modal-scroll::-webkit-scrollbar-track { background: #0f172a; }
+.modal-scroll::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 999px; border: 2px solid #0f172a; }

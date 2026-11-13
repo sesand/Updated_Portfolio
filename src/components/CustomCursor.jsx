@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [seen, setSeen] = useState(false);
 
   useEffect(() => {
     const updateMousePosition = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+      setSeen(true);
     };
 
     const handleMouseOver = (e) => {
@@ -53,16 +55,18 @@ const CustomCursor = () => {
     }
   };
 
+  if (!seen) return null;
+
   return (
     <>
         <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden [@media(pointer:fine)]:block"
         variants={variants}
         animate={isHovering ? 'hover' : 'default'}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.15 }}
         />
         <div 
-            className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full pointer-events-none z-[10000] hidden md:block transition-transform duration-75 ease-out"
+            className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full pointer-events-none z-[10000] hidden [@media(pointer:fine)]:block transition-transform duration-75 ease-out"
             style={{ transform: `translate(${mousePosition.x - 4}px, ${mousePosition.y - 4}px)` }}
         />
     </>
