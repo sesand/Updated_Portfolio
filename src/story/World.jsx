@@ -66,7 +66,7 @@ function Scene({ progressRef, activeRef, tier }) {
     const artifacts = useRef(null);
     const target = useMemo(() => new THREE.Color(GRADE[0]), []);
     const wireMat = useMemo(
-        () => new THREE.MeshBasicMaterial({ color: GRADE[0], wireframe: true, transparent: true, opacity: 0.32, depthWrite: false }),
+        () => new THREE.MeshBasicMaterial({ color: GRADE[0], wireframe: true, transparent: true, opacity: 0.22, depthWrite: false }),
         []
     );
     const mouse = useRef({ x: 0, y: 0, sx: 0, sy: 0 });

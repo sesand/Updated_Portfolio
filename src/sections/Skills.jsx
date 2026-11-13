@@ -9,8 +9,8 @@ const rowA = profile.skills.slice(0, half);
 const rowB = profile.skills.slice(half);
 
 const Chip = ({ skill }) => (
-    <div className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 px-6 py-4 backdrop-blur transition-colors hover:border-primary/50">
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-slate-800 bg-slate-950 p-2.5">
+    <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-slate-950/75 px-6 py-4 backdrop-blur-xl transition-colors hover:border-primary/50">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white p-2.5 shadow-inner">
             <img src={skill.iconUrl} alt="" loading="lazy" className="h-full w-full object-contain" />
         </span>
         <span className="whitespace-nowrap text-sm font-bold text-slate-100">{skill.name}</span>
@@ -34,14 +34,14 @@ const Skills = () => (
                     Full <span className="text-gradient">skill set</span>
                 </h3>
             </Reveal>
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="gap-6 md:columns-2 [&>*]:mb-6 [&>*]:break-inside-avoid">
                 {profile.skillGroups.map((group, i) => (
                     <Reveal key={group.title} delay={(i % 2) * 0.1}>
-                        <TiltCard max={4} className="h-full min-w-0 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur transition-colors hover:border-primary/30">
+                        <TiltCard max={4} className="min-w-0 rounded-2xl border border-white/10 bg-slate-950/75 p-6 backdrop-blur-xl transition-colors hover:border-primary/30">
                             <h4 className="mb-4 text-sm font-bold uppercase tracking-wider text-secondary">{group.title}</h4>
                             <div className="flex flex-wrap gap-2">
                                 {group.items.map((item) => (
-                                    <span key={item} className="rounded-full border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-medium text-slate-300">{item}</span>
+                                    <span key={item} className="rounded-full border border-white/10 bg-slate-950 px-3 py-1 text-xs font-medium text-slate-300">{item}</span>
                                 ))}
                             </div>
                         </TiltCard>

@@ -56,7 +56,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 backdrop-blur-md"
+              className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 backdrop-blur-xl"
             >
               <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
               <span className="text-sm font-medium uppercase tracking-wide text-primary">Open to Opportunities</span>
@@ -99,7 +99,7 @@ const Hero = () => {
                 <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-950 text-primary"><Play size={13} fill="currentColor" className="ml-0.5" /></span>
                 Play my story
               </button>
-              <a href="#projects" className="flex items-center gap-2 rounded-full border border-slate-600 bg-slate-950/40 px-8 py-4 font-bold text-white backdrop-blur transition hover:border-primary hover:bg-slate-900">
+              <a href="#projects" className="flex items-center gap-2 rounded-full border border-slate-600 bg-slate-950/40 px-8 py-4 font-bold text-white backdrop-blur-xl transition hover:border-primary hover:bg-slate-900">
                 View Work <ArrowRight size={16} />
               </a>
               <a href={`mailto:${profile.social.email}`} className="flex items-center gap-2 rounded-full border border-slate-700 px-6 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-900">
@@ -113,10 +113,10 @@ const Hero = () => {
             <div className="mt-12 flex items-center justify-center gap-6 lg:justify-start">
               <span className="text-sm font-medium uppercase tracking-wider text-slate-400">Connect:</span>
               <div className="flex items-center gap-3">
-                <a href={profile.social.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-slate-300 transition hover:border-[#0077b5] hover:text-[#38b6ff]">
+                <a href={profile.social.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/75 px-4 py-2 text-slate-300 transition hover:border-[#0077b5] hover:text-[#38b6ff]">
                   <LinkedInIcon /> LinkedIn
                 </a>
-                <a href={profile.social.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-slate-300 transition hover:border-white hover:text-white">
+                <a href={profile.social.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/75 px-4 py-2 text-slate-300 transition hover:border-white hover:text-white">
                   <GitHubIcon /> GitHub
                 </a>
               </div>
@@ -131,7 +131,7 @@ const Hero = () => {
               className="relative aspect-square w-full"
             >
               <div className="absolute inset-0 animate-pulse-slow rounded-full bg-gradient-to-tr from-primary to-accent opacity-25 blur-[100px]" />
-              <TiltCard className="relative z-10 h-full w-full rounded-[2rem] border border-white/10 bg-slate-900/40 p-3 shadow-2xl backdrop-blur-xl md:p-4" max={9}>
+              <TiltCard className="relative z-10 h-full w-full rounded-[2rem] border border-white/10 bg-slate-950/75 p-3 shadow-2xl backdrop-blur-xl md:p-4" max={9}>
                 <div className="absolute left-6 top-6 h-14 w-14 rounded-tl-[1.2rem] border-l-2 border-t-2 border-primary/60" />
                 <div className="absolute bottom-6 right-6 h-14 w-14 rounded-br-[1.2rem] border-b-2 border-r-2 border-accent/60" />
                 <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-slate-800">
@@ -149,7 +149,7 @@ const Hero = () => {
                       <img src={profileImages[currentImageIndex]} alt="Sesan Duraisamy" className="absolute inset-x-0 top-0 h-[calc(100%-5.5rem)] w-full object-contain" />
                     </motion.div>
                   </AnimatePresence>
-                  <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-white/10 bg-slate-950/85 px-4 py-3 backdrop-blur-md">
+                  <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-white/10 bg-slate-950/85 px-4 py-3 backdrop-blur-xl">
                     <p className="text-sm font-bold text-white">{profile.name}</p>
                     <p className="text-xs font-bold uppercase tracking-widest text-primary">{profile.roleNote}</p>
                   </div>
@@ -159,7 +159,7 @@ const Hero = () => {
               {BADGES.map((b) => (
                 <motion.span
                   key={b.text}
-                  className={`absolute z-20 hidden rounded-full border border-white/15 bg-slate-950/75 px-4 py-2 text-xs font-semibold text-slate-100 shadow-lg backdrop-blur sm:block ${b.pos}`}
+                  className={`absolute z-20 hidden rounded-full border border-white/15 bg-slate-950/75 px-4 py-2 text-xs font-semibold text-slate-100 shadow-lg backdrop-blur-xl sm:block ${b.pos}`}
                   animate={reduce ? undefined : { y: [0, -9, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: b.delay }}
                 >

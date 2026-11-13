@@ -29,7 +29,7 @@ function ChapterRail() {
                                 aria-current={on ? 'true' : undefined}
                                 className="group flex items-center gap-3"
                             >
-                                <span className={`text-[11px] font-semibold uppercase tracking-widest transition-all duration-300 ${on ? 'translate-x-0 text-primary opacity-100' : 'translate-x-2 text-slate-400 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}>
+                                <span className={`rounded-full bg-slate-950/85 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest backdrop-blur transition-all duration-300 ${on ? 'translate-x-0 text-primary opacity-100' : 'translate-x-2 text-slate-400 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}>
                                     {c.label}
                                 </span>
                                 <span className={`block rounded-full transition-all duration-300 ${on ? 'h-6 w-1.5 bg-primary shadow-[0_0_12px_#38bdf8]' : 'h-1.5 w-1.5 bg-slate-600 group-hover:bg-slate-300'}`} />

@@ -48,7 +48,7 @@
   }
   
   .glass {
-    @apply bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-xl;
+    @apply bg-slate-950/75 backdrop-blur-xl border border-white/10 shadow-xl;
   }
   
   /* giant outlined chapter numbers */
@@ -106,9 +106,6 @@
   animation: marquee 40s linear infinite;
 }
 
-/* when Motion is switched off (or the OS asks for it) nothing loops */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
+/* when the Motion toggle is off nothing loops */
 html[data-motion="off"] .marquee-track { animation: none; }
 html[data-motion="off"] * { scroll-behavior: auto !important; }

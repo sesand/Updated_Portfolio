@@ -17,7 +17,8 @@ export default function ScrollVideo() {
     const { active } = useStory();
     const { scrollY, scrollYProgress } = useScroll();
     const velocity = useVelocity(scrollY);
-    const opacity = useTransform(scrollYProgress, [0, 0.1, 0.5, 1], [0.9, 0.5, 0.42, 0.55]);
+    // bright in the intro, then dimmed so text on top stays easy to read
+    const opacity = useTransform(scrollYProgress, [0, 0.06, 0.12, 0.92, 1], [0.9, 0.45, 0.24, 0.24, 0.4]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1.35]);
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '-6%']);
 

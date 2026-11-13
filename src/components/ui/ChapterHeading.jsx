@@ -6,11 +6,11 @@ import { SplitWords, Reveal } from './Reveal';
 export default function ChapterHeading({ number, kicker, title, accent, intro }) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-    const x = useTransform(scrollYProgress, [0, 1], [-60, 80]);
+    const x = useTransform(scrollYProgress, [0, 1], [10, -50]);
 
     return (
         <header ref={ref} className="relative mb-14 md:mb-20">
-            <motion.span aria-hidden="true" style={{ x }} className="outline-text pointer-events-none absolute -top-10 left-0 select-none text-[7rem] font-black leading-none opacity-60 md:-top-16 md:text-[12rem]">
+            <motion.span aria-hidden="true" style={{ x }} className="outline-text pointer-events-none absolute -top-6 right-0 select-none text-[6rem] font-black leading-none opacity-50 md:-top-12 md:text-[11rem]">
                 {number}
             </motion.span>
             <div className="relative pt-10 md:pt-16">
@@ -26,7 +26,7 @@ export default function ChapterHeading({ number, kicker, title, accent, intro })
                 </h2>
                 {intro && (
                     <Reveal delay={0.2}>
-                        <p className="mt-6 max-w-2xl text-lg text-slate-400">{intro}</p>
+                        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">{intro}</p>
                     </Reveal>
                 )}
             </div>

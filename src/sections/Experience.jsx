@@ -42,7 +42,7 @@ const Experience = () => {
                                         viewport={{ once: true, margin: '0px 0px -120px 0px' }}
                                         transition={{ delay: 0.2, type: 'spring', stiffness: 300, damping: 14 }}
                                     />
-                                    <TiltCard max={4} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur-md transition-colors hover:border-primary/40 md:p-8">
+                                    <TiltCard max={4} className="rounded-2xl border border-white/10 bg-slate-950/75 p-6 backdrop-blur-xl transition-colors hover:border-primary/40 md:p-8">
                                         <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-start">
                                             <div>
                                                 <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
@@ -62,7 +62,7 @@ const Experience = () => {
                                         {exp.highlights?.length > 0 && (
                                             <ul className="mb-6 space-y-3">
                                                 {exp.highlights.map((point) => (
-                                                    <li key={point} className="flex gap-3 text-sm leading-relaxed text-slate-400 md:text-base">
+                                                    <li key={point} className="flex gap-3 text-sm leading-relaxed text-slate-300 md:text-base">
                                                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true" />
                                                         <span>{point}</span>
                                                     </li>
